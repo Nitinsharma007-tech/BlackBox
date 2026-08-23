@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NovaShields Plus — Guardian Login</title>
+
+    <link
+        rel="stylesheet"
+        href="../shared-base.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/guardian.css"
+    >
+
+</head>
+
+<body>
+
+    <main class="guardian-login-page">
+
+        <section class="guardian-login-card">
+
+            <!-- BRAND -->
+
+            <div class="guardian-login-brand">
+
+                <div class="guardian-logo">
+                    NS
+                </div>
+
+                <div>
+
+                    <div class="guardian-brand-title">
+                        NovaShields Plus
+                    </div>
+
+                    <div class="guardian-brand-subtitle">
+                        Guardian Portal
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- HEADING -->
+
+            <div class="guardian-login-heading">
+
+                <h1>
+                    Welcome back
+                </h1>
+
+                <p>
+                    Sign in to monitor your rider's
+                    safety and live journey.
+                </p>
+
+            </div>
+
+
+            <!-- ERROR -->
+
+            <div
+                class="ns-error"
+                id="errorBox"
+            ></div>
+
+
+            <!-- LOGIN -->
+
+            <form id="loginForm">
+
+                <div class="guardian-field">
+
+                    <label for="email">
+                        Email address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        value="parent@novashields.local"
+                        autocomplete="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="guardian-field">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        value="Nova@12345"
+                        autocomplete="current-password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="guardian-login-options">
+
+                    <label class="remember-option">
+
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                            checked
+                        >
+
+                        <span>
+                            Remember me
+                        </span>
+
+                    </label>
+
+                    <span class="forgot-password">
+                        Forgot password?
+                    </span>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="guardian-login-button"
+                    id="submitBtn"
+                >
+                    Log in
+                </button>
+
+            </form>
+
+
+            <!-- DEMO -->
+
+            <div class="guardian-demo">
+
+                <div class="guardian-demo-title">
+                    Demo Guardian Account
+                </div>
+
+                <div>
+                    parent@novashields.local
+                </div>
+
+                <div>
+                    Parent ID:
+                    <strong>PT001</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- API -->
+
+    <script src="../shared-config.js"></script>
+
+    <script src="../shared-api.js"></script>
+
+    <script src="js/auth.js"></script>
+
+</body>
+
+</html>

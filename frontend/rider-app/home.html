@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rider Dashboard - NovaShields</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#ffffff",
+                    "success": "#00C853",
+                    "on-secondary-fixed": "#001f24",
+                    "inverse-primary": "#45d8ed",
+                    "tertiary-fixed": "#ffdcc5",
+                    "on-tertiary-fixed-variant": "#703700",
+                    "secondary-fixed-dim": "#66d6e7",
+                    "on-surface": "#1A202C",
+                    "primary-fixed-dim": "#45d8ed",
+                    "on-secondary-fixed-variant": "#004f58",
+                    "outline": "#6c797c",
+                    "danger": "#FF1744",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#006874",
+                    "surface-variant": "#dfe3e7",
+                    "surface-container-high": "#e4e9ed",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "tertiary-container": "#ff9d50",
+                    "outline-variant": "#bbc9cc",
+                    "on-surface-variant": "#3c494b",
+                    "secondary": "#006874",
+                    "error-container": "#ffdad6",
+                    "on-background": "#171c1f",
+                    "surface-dim": "#d6dade",
+                    "surface": "#f6fafe",
+                    "on-tertiary-container": "#703700",
+                    "inverse-surface": "#2c3134",
+                    "surface-container-low": "#f0f4f8",
+                    "surface-container-highest": "#dfe3e7",
+                    "primary-container": "#26c6da",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#7fedfe",
+                    "surface-container": "#eaeef2",
+                    "error": "#ba1a1a",
+                    "primary": "#006874",
+                    "inverse-on-surface": "#edf1f5",
+                    "surface-bright": "#FFFFFF",
+                    "on-secondary-container": "#006b77",
+                    "on-primary-container": "#004e57",
+                    "tertiary": "#944b00",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#97f0ff",
+                    "on-tertiary-fixed": "#301400",
+                    "surface-glass": "rgba(255, 255, 255, 0.7)",
+                    "on-primary-fixed-variant": "#004f58",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed": "#001f24",
+                    "primary-fixed": "#98f0ff",
+                    "warning": "#FFB300",
+                    "background": "#f6fafe"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "card-padding": "24px",
+                    "stack-md": "16px",
+                    "unit": "8px",
+                    "container-margin": "24px",
+                    "gutter": "16px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "headline-md": [
+                            "Manrope"
+                    ],
+                    "label-lg": [
+                            "Inter"
+                    ],
+                    "display-lg": [
+                            "Manrope"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "headline-lg": [
+                            "Manrope"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "headline-lg-mobile": [
+                            "Manrope"
+                    ]
+            },
+            "fontSize": {
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-lg": [
+                            "12px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "0.1em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.03em",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "28px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-top: 1px solid rgba(255, 255, 255, 0.8);
+            border-left: 1px solid rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+        }
+        .glow-active {
+            box-shadow: 0 15px 35px rgba(38, 198, 218, 0.2);
+        }
+    </style>
+    <script src="../shared-config.js"></script>
+    <script src="../shared-api.js"></script>
+    <script src="js/home.js"></script>
+</head>
+<body class="bg-background text-on-surface font-body-md h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-full p-4 gap-2 bg-surface-glass backdrop-blur-3xl shadow-xl w-72 border-r border-white/80 z-20 shrink-0">
+<div class="flex items-center gap-3 mb-8 px-4 py-2">
+<span class="material-symbols-outlined text-primary-container text-4xl" data-weight="fill">shield</span>
+<div>
+<h1 class="text-headline-md font-headline-md font-extrabold text-primary">NovaShields</h1>
+<p class="text-label-lg font-label-lg text-outline">Enterprise Safety</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-4 px-4 py-3 bg-primary-container/20 text-primary font-semibold rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined" data-weight="fill">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-secondary-container/30 transition-all hover:translate-x-1 duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Telemetry</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-secondary-container/30 transition-all hover:translate-x-1 duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">health_and_safety</span>
+<span>Safety Hub</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-secondary-container/30 transition-all hover:translate-x-1 duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">minor_crash</span>
+<span>Fleet</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-secondary-container/30 transition-all hover:translate-x-1 duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span>Insurance</span>
+</a>
+</div>
+<div class="mt-auto flex flex-col gap-2">
+<button class="w-full py-3 px-4 bg-danger text-on-error font-bold rounded-xl shadow-lg flex items-center justify-center gap-2 hover:bg-red-700 transition-colors">
+<span class="material-symbols-outlined">sos</span>
+                Emergency Response
+            </button>
+<div class="h-px bg-outline-variant/30 my-2"></div>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-secondary-container/30 transition-all hover:translate-x-1 duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-secondary-container/30 transition-all hover:translate-x-1 duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">person</span>
+<span>Account</span>
+</a>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-full overflow-hidden relative">
+<!-- Abstract Background -->
+<div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary-container/20 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-secondary-container/20 rounded-full blur-[100px]"></div>
+</div>
+<!-- TopNavBar (Mobile Only) -->
+<header class="md:hidden flex justify-between items-center w-full px-6 py-3 bg-surface-glass backdrop-blur-xl shadow-sm border-b border-white/50 z-20">
+<h1 class="text-headline-md font-headline-md font-extrabold text-primary">NovaShields</h1>
+<div class="flex gap-4">
+<button class="text-primary hover:bg-primary-container/10 p-2 rounded-full transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-4 md:p-8 z-10">
+<div class="max-w-7xl mx-auto space-y-8">
+<!-- Header -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-display-lg font-display-lg text-on-surface">Good evening, Alex.</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant mt-2">Systems optimal. Ready for your ride.</p>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-low px-4 py-2 rounded-full border border-surface-variant">
+<div class="w-3 h-3 rounded-full bg-success animate-pulse"></div>
+<span class="text-label-lg font-label-lg text-on-surface-variant">GPS ACTIVE</span>
+</div>
+</header>
+<!-- Dashboard Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Main Status Card -->
+<div class="glass-card rounded-3xl p-8 md:col-span-5 flex flex-col items-center justify-center glow-active relative overflow-hidden min-h-[400px]">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-primary-container/5 pointer-events-none"></div>
+<div class="relative w-64 h-64 flex items-center justify-center mb-6">
+<!-- Circular Progress/Status -->
+<svg class="w-full h-full transform -rotate-90 absolute inset-0" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="#eaeef2" stroke-width="4"></circle>
+<circle class="transition-all duration-1000 ease-out" cx="50" cy="50" fill="none" r="45" stroke="#26c6da" stroke-dasharray="283" stroke-dashoffset="20" stroke-width="4"></circle>
+</svg>
+<div class="text-center z-10 flex flex-col items-center">
+<span class="material-symbols-outlined text-6xl text-primary-container mb-2" data-weight="fill">verified_user</span>
+<span class="text-display-lg font-display-lg text-primary tracking-tight">SAFE</span>
+</div>
+</div>
+<div class="flex gap-4 w-full">
+<div class="flex-1 bg-surface-container-lowest/50 rounded-xl p-4 text-center border border-white/50">
+<p class="text-label-lg font-label-lg text-outline mb-1">RIDE TIME</p>
+<p class="text-headline-md font-headline-md text-on-surface">0:42</p>
+</div>
+<div class="flex-1 bg-surface-container-lowest/50 rounded-xl p-4 text-center border border-white/50">
+<p class="text-label-lg font-label-lg text-outline mb-1">DISTANCE</p>
+<p class="text-headline-md font-headline-md text-on-surface">12 km</p>
+</div>
+</div>
+</div>
+<!-- Telemetry & Speed -->
+<div class="md:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Speedometer -->
+<div class="glass-card rounded-3xl p-6 md:col-span-2 flex items-center justify-between">
+<div class="flex-1">
+<p class="text-label-lg font-label-lg text-outline mb-2 uppercase">Current Speed</p>
+<div class="flex items-baseline gap-2">
+<span class="text-[72px] leading-none font-display-lg font-extrabold text-on-surface tracking-tighter">54</span>
+<span class="text-headline-md font-headline-md text-on-surface-variant">km/h</span>
+</div>
+<div class="mt-4 flex items-center gap-3">
+<div class="h-2 flex-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[65%] rounded-full"></div>
+</div>
+<span class="text-label-lg font-label-lg text-outline">LIMIT: 80</span>
+</div>
+</div>
+<!-- Speed Graph Placeholder -->
+<div class="w-1/3 h-32 ml-6 bg-gradient-to-t from-primary-container/20 to-transparent rounded-xl border-b-2 border-primary-container relative flex items-end">
+<!-- Simulated graph bars -->
+<div class="w-full flex justify-between items-end px-2 gap-1 h-full pb-1 opacity-50">
+<div class="w-full bg-primary-container/40 rounded-t h-[40%]"></div>
+<div class="w-full bg-primary-container/40 rounded-t h-[50%]"></div>
+<div class="w-full bg-primary-container/40 rounded-t h-[70%]"></div>
+<div class="w-full bg-primary-container/40 rounded-t h-[60%]"></div>
+<div class="w-full bg-primary-container rounded-t h-[80%]"></div>
+</div>
+</div>
+</div>
+<!-- Pitch/Roll Mini Cards -->
+<div class="glass-card rounded-3xl p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<p class="text-label-lg font-label-lg text-outline uppercase">Lean Angle</p>
+<span class="material-symbols-outlined text-primary-container">sports_motorsports</span>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<span class="text-display-lg font-display-lg text-on-surface">12°</span>
+<p class="text-body-md font-body-md text-success flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-sm">check_circle</span> Stable
+                                    </p>
+</div>
+<!-- Visual indicator -->
+<div class="w-12 h-12 rounded-full border-2 border-surface-variant relative flex items-center justify-center">
+<div class="w-8 h-1 bg-primary-container rounded-full transform rotate-12"></div>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-3xl p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<p class="text-label-lg font-label-lg text-outline uppercase">Acceleration</p>
+<span class="material-symbols-outlined text-primary-container">speed</span>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<span class="text-display-lg font-display-lg text-on-surface">0.8<span class="text-headline-md text-on-surface-variant">g</span></span>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">
+                                        Optimal traction
+                                    </p>
+</div>
+<div class="flex gap-1 h-8 items-end">
+<div class="w-2 bg-primary-container/30 h-1/3 rounded-sm"></div>
+<div class="w-2 bg-primary-container/60 h-2/3 rounded-sm"></div>
+<div class="w-2 bg-primary-container h-full rounded-sm"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

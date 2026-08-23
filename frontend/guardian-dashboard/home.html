@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Parent Dashboard - NovaShields</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "success": "#00C853",
+                        "on-secondary-fixed": "#001f24",
+                        "inverse-primary": "#45d8ed",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "secondary-fixed-dim": "#66d6e7",
+                        "on-surface": "#1A202C",
+                        "primary-fixed-dim": "#45d8ed",
+                        "on-secondary-fixed-variant": "#004f58",
+                        "outline": "#6c797c",
+                        "danger": "#FF1744",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#006874",
+                        "surface-variant": "#dfe3e7",
+                        "surface-container-high": "#e4e9ed",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "tertiary-container": "#ff9d50",
+                        "outline-variant": "#bbc9cc",
+                        "on-surface-variant": "#3c494b",
+                        "secondary": "#006874",
+                        "error-container": "#ffdad6",
+                        "on-background": "#171c1f",
+                        "surface-dim": "#d6dade",
+                        "surface": "#f6fafe",
+                        "on-tertiary-container": "#703700",
+                        "inverse-surface": "#2c3134",
+                        "surface-container-low": "#f0f4f8",
+                        "surface-container-highest": "#dfe3e7",
+                        "primary-container": "#26c6da",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#7fedfe",
+                        "surface-container": "#eaeef2",
+                        "error": "#ba1a1a",
+                        "primary": "#006874",
+                        "inverse-on-surface": "#edf1f5",
+                        "surface-bright": "#FFFFFF",
+                        "on-secondary-container": "#006b77",
+                        "on-primary-container": "#004e57",
+                        "tertiary": "#944b00",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#97f0ff",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-glass": "rgba(255, 255, 255, 0.7)",
+                        "on-primary-fixed-variant": "#004f58",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#001f24",
+                        "primary-fixed": "#98f0ff",
+                        "warning": "#FFB300",
+                        "background": "#f6fafe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "card-padding": "24px",
+                        "stack-md": "16px",
+                        "unit": "8px",
+                        "container-margin": "24px",
+                        "gutter": "16px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Manrope"],
+                        "label-lg": ["Inter"],
+                        "display-lg": ["Manrope"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-lg": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-top: 1px solid rgba(255, 255, 255, 0.8);
+            border-left: 1px solid rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+        }
+
+        .glass-active {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 15px 35px rgba(38, 198, 218, 0.1);
+        }
+
+        .glass-danger {
+            background: rgba(255, 23, 68, 0.1);
+            border: 1px solid rgba(255, 23, 68, 0.3);
+            box-shadow: 0 0 20px rgba(255, 23, 68, 0.1);
+        }
+
+        .glow-text-danger {
+            text-shadow: 0 0 10px rgba(255, 23, 68, 0.5);
+        }
+        
+        .map-bg {
+            background-color: #e5e9ea;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex antialiased">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-full p-4 gap-2 bg-surface-glass backdrop-blur-3xl border-r border-white/80 shadow-xl w-72 fixed left-0 top-0 bottom-0 z-50">
+<div class="flex items-center gap-3 mb-8 px-4 pt-4">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container shadow-sm">
+<span class="material-symbols-outlined icon-filled">shield</span>
+</div>
+<div>
+<h1 class="text-headline-sm font-headline-md text-primary font-extrabold tracking-tight">NovaShields</h1>
+<p class="text-[10px] uppercase font-bold text-outline tracking-wider">Enterprise Safety</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary-container/20 text-primary font-semibold transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined icon-filled">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-secondary-container/30 transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Telemetry</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-secondary-container/30 transition-all" href="#">
+<span class="material-symbols-outlined">health_and_safety</span>
+<span>Safety Hub</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-secondary-container/30 transition-all" href="#">
+<span class="material-symbols-outlined">minor_crash</span>
+<span>Fleet</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-secondary-container/30 transition-all" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span>Insurance</span>
+</a>
+</div>
+<div class="mt-auto flex flex-col gap-2 pt-4 border-t border-outline-variant/30">
+<button class="w-full bg-danger text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-danger/90 transition-colors shadow-lg shadow-danger/20 mb-4">
+<span class="material-symbols-outlined icon-filled">emergency</span>
+                Emergency Response
+            </button>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-secondary-container/30 transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant hover:bg-secondary-container/30 transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span>Account</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-72 flex flex-col h-screen overflow-hidden bg-surface-container-low">
+<!-- TopAppBar (Mobile) -->
+<header class="md:hidden flex justify-between items-center w-full px-6 py-3 bg-surface-glass backdrop-blur-xl border-b border-white/50 shadow-sm z-40 sticky top-0">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined icon-filled text-primary-container text-2xl">shield</span>
+<span class="text-headline-md font-headline-md font-extrabold text-primary">NovaShields</span>
+</div>
+<div class="flex gap-4 items-center">
+<button class="text-on-surface-variant hover:bg-primary-container/10 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img alt="User Profile" class="w-8 h-8 rounded-full border-2 border-white shadow-sm bg-surface-variant" data-alt="A small circular avatar placeholder showing a generic user profile icon in a bright light mode setting, clean and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD05x3bXwfJdi1mOyBbJQRnTs-zTb6Dc9b-1q6nxYd9LaCDEYmC88mwiQjtxn4lvI2Y1KC7Yhf6GSOqw5GmZ2RjfXHO98EosC-5qLNSr2mieZuEJd1CFG87hE3kZOA5SKXky-uDzCZTXoFO5GzwTkIvkHah5dS5dUmQacr32xUX-LnyVWo_KzRAdJFTz_Qi5cxtT1YKAX-vrSRb4bJdnEuGPNup3_agiGSEgeeunQyyP_MyK0fKETMt0w"/>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="flex-1 p-container-margin overflow-y-auto overflow-x-hidden">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-1">Rider Oversight</h2>
+<p id="riderSubtitle" class="text-on-surface-variant text-body-md">
+    Real-time telemetry
+</p>
+</div>
+<div class="hidden sm:flex gap-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-success/10 text-success text-sm font-bold border border-success/20">
+<span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
+                        System Active
+                    </span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter h-full min-h-[800px]">
+<!-- Left Column (Map & Profile) -->
+<div class="lg:col-span-8 flex flex-col gap-gutter h-full">
+<!-- Map Canvas -->
+<div class="glass-panel rounded-2xl flex-1 relative overflow-hidden flex flex-col min-h-[400px]">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A modern, highly detailed digital map interface showing the streets of San Francisco in a light, bright color scheme with soft cyan accents. The style is clean, technical, and slightly abstract, focusing on road networks without heavy text labels." data-location="San Francisco" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCG_oM7T3vSmIX6949v4qq72pU4i3T2QwG8B0BEHgdnDd914gyDcWxfDCa_hujuCeMgIQcTBwU5_5e1klci_50RH0jik4C6fzJKGYZkOXFbcIgqifSarOOIcRaCqNz02wlSYriH2ExSYdMhaa5359xXJmlIkJBy4m_dnUjdX_aS3Lir6i1azUe3EM5RNCiU1mB3x6-rJd00-Hm9c6fgYkYLDATCf5Wktkk7OTtS1R2iTz0Lzyafu3TAng')"></div>
+<!-- Map Overlay Controls -->
+<div class="absolute top-4 left-4 right-4 flex justify-between pointer-events-none">
+<div class="glass-active px-4 py-2 rounded-xl flex items-center gap-2 pointer-events-auto">
+<span class="material-symbols-outlined text-primary-container">location_on</span>
+<span class="font-bold text-on-surface text-sm">San Francisco, CA</span>
+</div>
+<div class="flex gap-2 pointer-events-auto">
+<button class="w-10 h-10 glass-active rounded-xl flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">layers</span>
+</button>
+<button class="w-10 h-10 glass-active rounded-xl flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">my_location</span>
+</button>
+</div>
+</div>
+<!-- Simulated Rider Marker -->
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="bg-primary-container text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg mb-2 whitespace-nowrap">
+                                Alex • 42 mph
+                            </div>
+<div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center relative">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center shadow-lg relative z-10">
+<span class="material-symbols-outlined text-sm">two_wheeler</span>
+</div>
+<div class="absolute inset-0 rounded-full border-2 border-primary-container animate-ping opacity-50"></div>
+</div>
+</div>
+</div>
+<!-- Profile & Quick Stats Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Rider Profile Card -->
+<div class="glass-panel rounded-2xl p-card-padding flex items-center gap-4">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-md relative">
+<img class="w-full h-full object-cover" data-alt="A close up portrait photo of a young man wearing a modern motorcycle helmet with the visor up, smiling gently. Bright, studio lighting with a neutral, light-mode friendly background. Professional and clean aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKuA49ZcCaqs5-qy0tEQ46iEGsACXK_lHZD33I201dadmMsAiVYNNh5eiVg_Uy0gieTDXkm4bggdFO5m8eXMiXCc_WfJyeW0KJ5SNbLgJjUXuYCmGXlCPrrSV8ocX1ruXYw5iisYSx2v0D-XUwDMp9r_njgkfgTy5szbTcyPtaPNkv2e3StWS_kGZxDuII1vpGsQilCBQJU6JntTniBLaE4JMTd6ZHFZox2zo8RuVCN-_CzBwaC6IK9A"/>
+<div class="absolute bottom-0 right-0 w-4 h-4 bg-success rounded-full border-2 border-white"></div>
+</div>
+<div>
+<h3 id="riderName"
+    class="font-headline-md text-xl text-on-surface font-bold">
+    Rider
+</h3>
+<span id="vehicleName">
+    Vehicle
+</span>
+</div>
+<button class="ml-auto w-10 h-10 rounded-full bg-surface-container hover:bg-primary-container/20 flex items-center justify-center text-primary transition-colors">
+<span class="material-symbols-outlined">call</span>
+</button>
+</div>
+<!-- Mini Vital -->
+<div class="glass-panel rounded-2xl p-card-padding flex justify-between items-center">
+<div>
+<p class="text-label-lg text-outline font-label-lg uppercase mb-1">Trip Duration</p>
+<p class="text-3xl font-display-lg text-on-surface font-extrabold tracking-tight">42<span class="text-lg text-on-surface-variant font-normal">m</span></p>
+</div>
+<div class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined icon-filled">timer</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (Telemetry & Logs) -->
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<!-- Live Telemetry Card -->
+<div class="glass-panel rounded-2xl p-card-padding flex flex-col gap-6">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-lg text-on-surface font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">speed</span>
+                                Live Telemetry
+                            </h3>
+<span class="text-xs text-primary font-bold animate-pulse">LIVE</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Speed -->
+<div class="bg-surface-container-lowest/50 rounded-xl p-4 border border-white/60">
+<p class="text-label-lg text-outline font-label-lg uppercase mb-2">Speed</p>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-display-lg text-on-surface font-extrabold">42</span>
+<span class="text-sm font-bold text-on-surface-variant">mph</span>
+</div>
+<div class="mt-3 h-1.5 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[60%] rounded-full"></div>
+</div>
+</div>
+<!-- Lean Angle -->
+<div class="bg-surface-container-lowest/50 rounded-xl p-4 border border-white/60">
+<p class="text-label-lg text-outline font-label-lg uppercase mb-2">Lean Angle</p>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-display-lg text-on-surface font-extrabold">12°</span>
+<span class="text-sm font-bold text-on-surface-variant">R</span>
+</div>
+<div class="mt-3 flex justify-center">
+<div class="w-full h-1.5 bg-surface-variant rounded-full overflow-hidden relative">
+<div class="absolute top-0 left-1/2 h-full bg-outline w-0.5 -translate-x-1/2"></div>
+<div class="absolute top-0 left-1/2 h-full bg-primary-container w-[20%] rounded-r-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Safety Event Log -->
+<div class="glass-panel rounded-2xl p-card-padding flex-1 flex flex-col min-h-[300px]">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline-md text-lg text-on-surface font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-warning">warning</span>
+                                Activity Log
+                            </h3>
+<button class="text-sm font-bold text-primary hover:underline">View All</button>
+</div>
+<div class="flex-1 overflow-y-auto pr-2 space-y-4">
+<!-- Event Item 1 (Warning) -->
+<div class="relative pl-6 pb-2 border-l-2 border-outline-variant/30">
+<div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-warning border-2 border-white shadow-sm"></div>
+<div class="bg-surface-container-lowest/60 rounded-xl p-3 border border-white/50">
+<div class="flex justify-between items-start mb-1">
+<span class="font-bold text-on-surface text-sm">Overspeed</span>
+<span class="text-xs text-outline font-medium">10:42 AM</span>
+</div>
+<p class="text-sm text-on-surface-variant">Exceeded posted limit (35mph) by 12mph.</p>
+</div>
+</div>
+<!-- Event Item 2 (Danger) -->
+<div class="relative pl-6 pb-2 border-l-2 border-outline-variant/30">
+<div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-danger border-2 border-white shadow-sm animate-pulse"></div>
+<div class="glass-danger rounded-xl p-3">
+<div class="flex justify-between items-start mb-1">
+<span class="font-bold text-danger text-sm glow-text-danger">Pothole Impact</span>
+<span class="text-xs text-danger/80 font-medium">10:15 AM</span>
+</div>
+<p class="text-sm text-on-surface-variant">Severe vertical acceleration detected (3.2G).</p>
+</div>
+</div>
+<!-- Event Item 3 (Info) -->
+<div class="relative pl-6 pb-2 border-l-2 border-transparent">
+<div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-primary-container border-2 border-white shadow-sm"></div>
+<div class="bg-surface-container-lowest/60 rounded-xl p-3 border border-white/50">
+<div class="flex justify-between items-start mb-1">
+<span class="font-bold text-on-surface text-sm">Trip Started</span>
+<span class="text-xs text-outline font-medium">10:00 AM</span>
+</div>
+<p class="text-sm text-on-surface-variant">System armed. Route: Home to Downtown.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden flex justify-between items-center w-full px-6 py-3 bg-surface-glass backdrop-blur-xl border-t border-white/50 shadow-lg sticky bottom-0 z-40">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined icon-filled">dashboard</span>
+<span class="text-[10px] font-bold">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-bold">Telemetry</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">health_and_safety</span>
+<span class="text-[10px] font-bold">Safety</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</a>
+</nav>
+<script src="../shared-config.js"></script>
+<script src="../shared-api.js"></script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script src="js/home.js"></script>
+</body></html>
