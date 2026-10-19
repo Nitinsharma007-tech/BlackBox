@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta
+        content="width=device-width, initial-scale=1.0"
+        name="viewport"
+    />
+
+    <title>Login - NovaShields</title>
+
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        crossorigin
+        href="https://fonts.gstatic.com"
+        rel="preconnect"
+    />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Manrope:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+
+            theme: {
+                extend: {
+
+                    colors: {
+                        primary: "#006874",
+                        "primary-container": "#26c6da",
+                        "surface": "#f6fafe",
+                        "surface-container-low": "#f0f4f8",
+                        "surface-container-high": "#e4e9ed",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#dfe3e7",
+                        "on-surface": "#1A202C",
+                        "on-surface-variant": "#3c494b",
+                        outline: "#6c797c",
+                        "outline-variant": "#bbc9cc",
+                        danger: "#FF1744"
+                    },
+
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+
+                    fontFamily: {
+                        headline: ["Manrope"],
+                        body: ["Inter"]
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+
+        body {
+            font-family: Inter, sans-serif;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+            border-top: 1px solid rgba(255, 255, 255, 0.8);
+            border-left: 1px solid rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        .primary-btn {
+            background: linear-gradient(
+                180deg,
+                #26C6DA 0%,
+                #1db8cc 100%
+            );
+
+            box-shadow:
+                0 4px 14px rgba(38, 198, 218, 0.3);
+
+            transition: all 0.2s ease;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 6px 20px rgba(38, 198, 218, 0.4);
+        }
+
+        .primary-btn:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .input-field {
+            border: 1px solid #E2E8F0;
+            transition: all 0.2s ease;
+        }
+
+        .input-field:focus {
+            border-color: #26C6DA;
+
+            box-shadow:
+                0 0 0 4px rgba(38, 198, 218, 0.15);
+
+            outline: none;
+        }
+
+        /* --------------------------------------------------
+           LOGIN ERROR
+           -------------------------------------------------- */
+
+        .ns-error {
+            display: none;
+
+            margin-bottom: 20px;
+            padding: 12px 14px;
+
+            border-radius: 8px;
+
+            background: #fff1f2;
+            border: 1px solid #fecdd3;
+
+            color: #be123c;
+
+            font-family: Inter, sans-serif;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .ns-error.show {
+            display: block;
+        }
+
+        /* --------------------------------------------------
+           ROLE TABS
+           -------------------------------------------------- */
+
+        .role-btn.active {
+            background: white;
+            color: #006874;
+
+            box-shadow:
+                0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        /* --------------------------------------------------
+           PASSWORD TOGGLE
+           -------------------------------------------------- */
+
+        .password-toggle {
+            cursor: pointer;
+            user-select: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body
+    class="bg-surface min-h-screen flex text-on-surface antialiased overflow-hidden"
+>
+
+
+<!-- ==========================================================
+     LEFT SIDE
+     ========================================================== -->
+
+<div
+    class="hidden lg:flex w-1/2 relative bg-surface-container-low overflow-hidden items-center justify-center"
+>
+
+    <!-- Background -->
+    <div class="absolute inset-0 z-0">
+
+        <div
+            class="absolute top-[-10%] left-[-10%] w-[120%] h-[120%]"
+            style="
+                background:
+                radial-gradient(
+                    ellipse at center,
+                    rgba(38,198,218,0.12),
+                    #f6fafe 55%,
+                    #f6fafe
+                );
+            "
+        ></div>
+
+
+        <div
+            class="absolute top-1/4 left-1/4 w-96 h-96
+                   bg-cyan-300/20 rounded-full
+                   mix-blend-multiply filter blur-3xl
+                   opacity-70"
+        ></div>
+
+
+        <div
+            class="absolute top-1/3 right-1/4 w-72 h-72
+                   bg-cyan-200/30 rounded-full
+                   mix-blend-multiply filter blur-3xl
+                   opacity-70"
+        ></div>
+
+    </div>
+
+
+    <!-- Branding -->
+    <div
+        class="relative z-10 p-12 max-w-xl text-center"
+    >
+
+        <!-- Logo -->
+        <div
+            class="inline-flex items-center justify-center
+                   w-20 h-20 rounded-2xl
+                   bg-white
+                   shadow-[0_15px_35px_rgba(38,198,218,0.1)]
+                   mb-8
+                   border border-white/80"
+        >
+
+            <span
+                class="material-symbols-outlined"
+                style="
+                    font-size:40px;
+                    color:#26c6da;
+                    font-variation-settings:'FILL' 1;
+                "
+            >
+                health_and_safety
+            </span>
+
+        </div>
+
+
+        <h1
+            class="font-headline text-[48px]
+                   leading-tight font-extrabold
+                   text-primary mb-4 tracking-tight"
+        >
+            NovaShields
+        </h1>
+
+
+        <p
+            class="font-headline text-2xl
+                   font-semibold
+                   text-on-surface-variant mb-12"
+        >
+            Protect Every Journey.
+        </p>
+
+
+        <!-- Hero -->
+        <div
+            class="relative w-full aspect-square
+                   max-w-md mx-auto
+                   rounded-[2rem]
+                   overflow-hidden
+                   glass-panel p-2"
+        >
+
+            <div
+                class="w-full h-full
+                       rounded-[1.75rem]
+                       overflow-hidden relative"
+            >
+
+                <img
+                    class="object-cover w-full h-full
+                           absolute inset-0 z-0"
+                    alt="NovaShields safety dashboard"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDd8h030QaJRVHxbiuJJVsRASOoKqUqc-DpaILOJct0OOVaaYezbsG1RSw0ggWNaJG3jjFSR1Aj7uf90u4qw81QWP1j46ZIdsOHGDlQ64DpvHu8LAh9jT8A5d6awRVwlEGGifixOarUFsFg0_ryZKtiAjc1w5y2B_clpzqgBpgCaOm8F541glwbL6ph6G_2ggDPBboK4AARMhuZuaUUmnpPWy2nHRpYJ7f8DBI1VegzpSN00u-hMclHUg"
+                />
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==========================================================
+     RIGHT SIDE
+     ========================================================== -->
+
+<div
+    class="w-full lg:w-1/2
+           flex items-center justify-center
+           p-6 sm:p-12 md:p-24
+           relative
+           bg-white
+           z-10"
+>
+
+
+    <!-- Mobile Logo -->
+    <div
+        class="absolute top-8 left-8
+               lg:hidden
+               flex items-center gap-2"
+    >
+
+        <div
+            class="inline-flex items-center
+                   justify-center
+                   w-10 h-10
+                   rounded-xl
+                   bg-cyan-50"
+        >
+
+            <span
+                class="material-symbols-outlined"
+                style="color:#26c6da;"
+            >
+                health_and_safety
+            </span>
+
+        </div>
+
+
+        <span
+            class="font-headline text-xl
+                   font-semibold text-primary"
+        >
+            NovaShields
+        </span>
+
+    </div>
+
+
+    <div class="w-full max-w-md">
+
+
+        <!-- Header -->
+        <div
+            class="mb-10
+                   text-center
+                   lg:text-left"
+        >
+
+            <h2
+                class="font-headline
+                       text-[32px]
+                       leading-tight
+                       font-bold
+                       text-on-surface
+                       mb-2"
+            >
+                <span id="portalTitle">Guardian Login</span>
+            </h2>
+
+
+            <p
+                id="portalSubtitle"
+                class="font-body
+                       text-base
+                       text-on-surface-variant"
+            >
+                Access your safety dashboard
+                to monitor your rider, vehicle, or insurance data.
+            </p>
+
+        </div>
+
+
+        <!-- ==================================================
+             LOGIN FORM
+
+             IMPORTANT:
+             auth.js expects:
+             loginForm
+             email
+             password
+             errorBox
+             submitBtn
+             ================================================== -->
+
+        <form
+            id="loginForm"
+            class="space-y-6"
+        >
+
+
+            <!-- ROLE SELECTOR -->
+
+            <div
+                class="flex p-1
+                       bg-surface-container-high
+                       rounded-lg mb-8"
+            >
+
+                <button
+                    type="button"
+                    class="role-btn flex-1
+                           py-2 px-4
+                           rounded-md
+                           font-bold text-xs
+                           tracking-widest
+                           text-on-surface-variant
+                           text-center
+                           transition-all"
+                    data-role="rider"
+                >
+                    Rider
+                </button>
+
+
+                <button
+                    type="button"
+                    class="role-btn active
+                           flex-1
+                           py-2 px-4
+                           rounded-md
+                           font-bold text-xs
+                           tracking-widest
+                           text-primary
+                           text-center
+                           transition-all"
+                    data-role="guardian"
+                >
+                    Parent
+                </button>
+
+
+                <button
+                    type="button"
+                    class="role-btn flex-1
+                           py-2 px-4
+                           rounded-md
+                           font-bold text-xs
+                           tracking-widest
+                           text-on-surface-variant
+                           text-center
+                           transition-all"
+                    data-role="insurer"
+                >
+                    Insurer
+                </button>
+
+            </div>
+
+
+            <!-- ==================================================
+                 ERROR BOX
+                 ================================================== -->
+
+            <div
+                id="errorBox"
+                class="ns-error"
+                role="alert"
+            ></div>
+
+
+            <!-- ==================================================
+                 INPUTS
+                 ================================================== -->
+
+            <div class="space-y-4">
+
+
+                <!-- EMAIL -->
+
+                <div>
+
+                    <label
+                        class="block
+                               font-bold
+                               text-xs
+                               tracking-widest
+                               text-on-surface-variant
+                               mb-2"
+                        for="email"
+                    >
+                        EMAIL OR USER ID
+                    </label>
+
+
+                    <div class="relative">
+
+                        <div
+                            class="absolute
+                                   inset-y-0 left-0
+                                   pl-3
+                                   flex items-center
+                                   pointer-events-none"
+                        >
+
+                            <span
+                                class="material-symbols-outlined
+                                       text-outline-variant"
+                            >
+                                person
+                            </span>
+
+                        </div>
+
+
+                        <input
+                            class="input-field
+                                   block w-full
+                                   pl-10 pr-3 py-3
+                                   rounded-lg
+                                   bg-white
+                                   text-base
+                                   text-on-surface
+                                   placeholder-gray-400"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            type="email"
+                            autocomplete="email"
+                            required
+                        />
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div>
+
+                    <label
+                        class="block
+                               font-bold
+                               text-xs
+                               tracking-widest
+                               text-on-surface-variant
+                               mb-2"
+                        for="password"
+                    >
+                        PASSKEY
+                    </label>
+
+
+                    <div class="relative">
+
+                        <div
+                            class="absolute
+                                   inset-y-0 left-0
+                                   pl-3
+                                   flex items-center
+                                   pointer-events-none"
+                        >
+
+                            <span
+                                class="material-symbols-outlined
+                                       text-outline-variant"
+                            >
+                                lock
+                            </span>
+
+                        </div>
+
+
+                        <!-- IMPORTANT:
+                             ID MUST BE password
+                             because auth.js uses
+                             getElementById("password")
+                        -->
+
+                        <input
+                            class="input-field
+                                   block w-full
+                                   pl-10 pr-12 py-3
+                                   rounded-lg
+                                   bg-white
+                                   text-base
+                                   text-on-surface
+                                   placeholder-gray-400"
+                            id="password"
+                            name="password"
+                            placeholder="••••••••"
+                            type="password"
+                            autocomplete="current-password"
+                            value="Nova@12345"
+                            required
+                        />
+
+
+                        <!-- Password toggle -->
+
+                        <div
+                            id="passwordToggle"
+                            class="password-toggle
+                                   absolute
+                                   inset-y-0 right-0
+                                   pr-3
+                                   flex items-center"
+                        >
+
+                            <span
+                                id="passwordIcon"
+                                class="material-symbols-outlined
+                                       text-outline-variant
+                                       hover:text-primary
+                                       transition-colors"
+                            >
+                                visibility_off
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==================================================
+                 REMEMBER / FORGOT
+                 ================================================== -->
+
+            <div
+                class="flex items-center
+                       justify-between mt-2"
+            >
+
+                <div class="flex items-center">
+
+                    <input
+                        class="h-4 w-4
+                               text-cyan-500
+                               focus:ring-cyan-500
+                               border-outline-variant
+                               rounded"
+                        id="remember-me"
+                        type="checkbox"
+                    />
+
+
+                    <label
+                        class="ml-2
+                               block
+                               text-sm
+                               text-on-surface-variant"
+                        for="remember-me"
+                    >
+                        Remember me
+                    </label>
+
+                </div>
+
+
+                <div class="text-sm">
+
+                    <a
+                        class="font-bold
+                               text-xs
+                               tracking-wider
+                               text-primary
+                               hover:text-cyan-500
+                               transition-colors"
+                        href="#"
+                        onclick="return false;"
+                    >
+                        Forgot passkey?
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==================================================
+                 SUBMIT
+                 ================================================== -->
+
+            <div class="pt-4">
+
+                <button
+                    id="submitBtn"
+                    class="w-full
+                           flex justify-center
+                           py-3 px-4
+                           border border-transparent
+                           rounded-lg
+                           primary-btn
+                           font-bold
+                           text-xs
+                           tracking-widest
+                           text-white"
+                    type="submit"
+                >
+                    Log in
+                </button>
+
+            </div>
+
+
+            <!-- ==================================================
+                 ALTERNATIVE LOGIN
+                 ================================================== -->
+
+            <div class="relative mt-8">
+
+                <div
+                    class="absolute inset-0
+                           flex items-center"
+                >
+
+                    <div
+                        class="w-full
+                               border-t
+                               border-surface-variant"
+                    ></div>
+
+                </div>
+
+
+                <div
+                    class="relative
+                           flex justify-center
+                           text-sm"
+                >
+
+                    <span
+                        class="px-2
+                               bg-white
+                               text-outline-variant
+                               font-bold
+                               text-xs
+                               tracking-widest"
+                    >
+                        OR CONTINUE WITH
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="mt-6
+                       grid grid-cols-2
+                       gap-3"
+            >
+
+                <button
+                    type="button"
+                    class="w-full
+                           inline-flex
+                           justify-center
+                           items-center
+                           py-2 px-4
+                           border
+                           border-surface-variant
+                           rounded-lg
+                           bg-white
+                           text-sm
+                           text-on-surface-variant
+                           hover:bg-surface-container-low
+                           transition-colors
+                           shadow-sm"
+                >
+
+                    <span
+                        class="material-symbols-outlined
+                               mr-2
+                               text-[20px]"
+                    >
+                        fingerprint
+                    </span>
+
+                    Biometrics
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="w-full
+                           inline-flex
+                           justify-center
+                           items-center
+                           py-2 px-4
+                           border
+                           border-surface-variant
+                           rounded-lg
+                           bg-white
+                           text-sm
+                           text-on-surface-variant
+                           hover:bg-surface-container-low
+                           transition-colors
+                           shadow-sm"
+                >
+
+                    <span
+                        class="material-symbols-outlined
+                               mr-2
+                               text-[20px]"
+                    >
+                        badge
+                    </span>
+
+                    SSO
+
+                </button>
+
+            </div>
+
+
+        
+<div style="text-align:center; margin-top:22px; font-size:14px; color:#64748b;">
+  New to NovaShields?
+  <a href="../signup/index.html"
+     style="color:#006874; font-weight:700; text-decoration:none;">
+    Create Account
+  </a>
+</div>
+
+</form>
+
+    </div>
+
+</div>
+
+
+<!-- ==========================================================
+     EXISTING NOVASHIELDS JAVASCRIPT
+     ========================================================== -->
+
+<script src="../shared-config.js"></script>
+<script src="../shared-api.js"></script>
+<script src="auth.js"></script>
+
+
+<!-- ==========================================================
+     COMMON LOGIN UI
+     Password visibility + role selection are handled here.
+     Authentication is handled by login/auth.js.
+     ========================================================== -->
+
+<script>
+    const passwordToggle =
+        document.getElementById("passwordToggle");
+
+    const passwordInput =
+        document.getElementById("password");
+
+    const passwordIcon =
+        document.getElementById("passwordIcon");
+
+    if (passwordToggle && passwordInput && passwordIcon) {
+        passwordToggle.addEventListener("click", () => {
+            const showing = passwordInput.type === "password";
+
+            passwordInput.type = showing ? "text" : "password";
+            passwordIcon.textContent =
+                showing ? "visibility" : "visibility_off";
+        });
+    }
+</script>
+
+</body>
+
+</html>

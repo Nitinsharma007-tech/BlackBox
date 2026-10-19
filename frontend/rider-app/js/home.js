@@ -7,7 +7,7 @@ const APP = "rider";
 const token = NovaAPI.getToken(APP);
 
 if (!token) {
-    window.location.href = "index.html";
+    window.location.href = "../login/index.html";
 }
 
 const user = NovaAPI.getUser(APP);
@@ -77,7 +77,7 @@ if (logoutBtn) {
 
         NovaAPI.logout(APP);
 
-        window.location.href = "index.html";
+        window.location.href = "../login/index.html";
     });
 }
 

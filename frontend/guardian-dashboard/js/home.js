@@ -8,7 +8,7 @@ const REFRESH_MS = 5000;
 const token = NovaAPI.getToken(APP);
 
 if (!token) {
-    window.location.href = "index.html";
+    window.location.href = "../login/index.html";
 }
 
 const user = NovaAPI.getUser(APP);

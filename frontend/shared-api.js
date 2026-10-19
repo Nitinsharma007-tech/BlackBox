@@ -94,3 +94,71 @@ const NovaAPI = (function () {
 }
   return { request, register, login, logout, getToken, getUser, getProfile, saveSession, getParentDashboardOverview };
 })();
+
+
+// ============================================================
+// CUSTOMER REGISTRATION
+// ============================================================
+// These methods intentionally fail clearly until the matching
+// backend registration endpoints are implemented.
+
+NovaAPI.requestSignupOtp = async function (phone) {
+    const res = await fetch(`${API_BASE}/auth/register/request-otp`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ phone })
+    });
+
+    const data = await res.json().catch(() => ({}));
+
+    if (!res.ok) {
+        throw new Error(
+            data.detail || data.message || "Unable to send OTP."
+        );
+    }
+
+    return data;
+};
+
+NovaAPI.verifySignupOtp = async function (phone, otp) {
+    const res = await fetch(`${API_BASE}/auth/register/verify-otp`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ phone, otp })
+    });
+
+    const data = await res.json().catch(() => ({}));
+
+    if (!res.ok) {
+        throw new Error(
+            data.detail || data.message || "OTP verification failed."
+        );
+    }
+
+    return data;
+};
+
+NovaAPI.registerCustomer = async function (payload) {
+    const res = await fetch(`${API_BASE}/auth/register`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    });
+
+    const data = await res.json().catch(() => ({}));
+
+    if (!res.ok) {
+        throw new Error(
+            data.detail || data.message || "Unable to complete registration."
+        );
+    }
+
+    return data;
+};
+

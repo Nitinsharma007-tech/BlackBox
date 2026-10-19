@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaShields — Create Account</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{primary:"#006874","primary-container":"#26c6da",surface:"#f6fafe",""surface-container-low":"#f0f4f8","surface-container-high":"#e4e9ed","on-surface":"#1A202C","on-surface-variant":"#3c494b",outline:"#6c797c","outline-variant":"#bbc9cc"},fontFamily:{headline:["Manrope"],body:["Inter"]}}}};
+</script>
+<style>
+body{font-family:Inter,sans-serif}
+.glass-panel{background:rgba(255,255,255,.7);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.8);box-shadow:0 10px 30px rgba(0,0,0,.04)}
+.primary-btn{background:linear-gradient(180deg,#26C6DA 0%,#1db8cc 100%);box-shadow:0 4px 14px rgba(38,198,218,.3);transition:.2s}
+.primary-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(38,198,218,.4)}
+.primary-btn:disabled{opacity:.65;cursor:not-allowed;transform:none}
+.input-field{border:1px solid #E2E8F0;transition:.2s}
+.input-field:focus{border-color:#26C6DA;box-shadow:0 0 0 4px rgba(38,198,218,.15);outline:none}
+.ns-error{display:none;margin-bottom:16px;padding:12px 14px;border-radius:8px;background:#fff1f2;border:1px solid #fecdd3;color:#be123c;font-size:14px}
+.ns-error.show{display:block}
+.step{display:none}.step.active{display:block}
+.step-dot{width:30px;height:30px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;background:#e4e9ed;color:#64748b}
+.step-dot.active,.step-dot.done{background:#26c6da;color:#fff}
+.step-line{height:2px;flex:1;background:#e4e9ed}.step-line.done{background:#26c6da}
+.contact-card{border:1px solid #e2e8f0;border-radius:12px;padding:14px;background:#fff}
+</style>
+</head>
+<body class="bg-surface min-h-screen flex text-on-surface antialiased">
+<div class="hidden lg:flex w-1/2 relative bg-surface-container-low overflow-hidden items-center justify-center">
+  <div class="absolute inset-0">
+    <div class="absolute top-[-10%] left-[-10%] w-[120%] h-[120%]" style="background:radial-gradient(ellipse at center,rgba(38,198,218,.12),#f6fafe 55%,#f6fafe)"></div>
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/3 right-1/4 w-72 h-72 bg-cyan-200/30 rounded-full blur-3xl"></div>
+  </div>
+  <div class="relative z-10 p-12 max-w-xl text-center">
+    <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white shadow-[0_15px_35px_rgba(38,198,218,0.1)] mb-8">
+      <span class="material-symbols-outlined" style="font-size:40px;color:#26c6da;font-variation-settings:'FILL' 1">health_and_safety</span>
+    </div>
+    <h1 class="font-headline text-[48px] leading-tight font-extrabold text-primary mb-4">NovaShields</h1>
+    <p class="font-headline text-2xl font-semibold text-on-surface-variant mb-10">Protect Every Journey.</p>
+    <div class="glass-panel rounded-[2rem] p-8 text-left">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="material-symbols-outlined text-primary">verified_user</span>
+        <div><div class="font-bold">Secure registration</div><div class="text-sm text-slate-500">One account for your complete safety ecosystem.</div></div>
+      </div>
+      <div class="space-y-4 text-sm text-slate-600">
+        <div class="flex gap-3"><span class="material-symbols-outlined text-primary text-lg">phone</span><span>Verify your mobile number with OTP.</span></div>
+        <div class="flex gap-3"><span class="material-symbols-outlined text-primary text-lg">person</span><span>Add rider and emergency-contact details.</span></div>
+        <div class="flex gap-3"><span class="material-symbols-outlined text-primary text-lg">memory</span><span>Activate your NovaShields Black Box.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-10 md:p-16 bg-white overflow-y-auto">
+<div class="w-full max-w-xl py-6">
+  <div class="mb-7">
+    <div class="flex items-center justify-between mb-3">
+      <div><h2 class="font-headline text-[30px] font-bold">Create Account</h2><p class="text-sm text-on-surface-variant">Register your NovaShields Black Box.</p></div>
+      <a href="../login/index.html" class="text-sm font-bold text-primary">Back to Login</a>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="step-dot active" data-dot="1">1</div><div class="step-line" data-line="1"></div>
+      <div class="step-dot" data-dot="2">2</div><div class="step-line" data-line="2"></div>
+      <div class="step-dot" data-dot="3">3</div><div class="step-line" data-line="3"></div>
+      <div class="step-dot" data-dot="4">4</div><div class="step-line" data-line="4"></div>
+      <div class="step-dot" data-dot="5">5</div>
+    </div>
+    <div class="text-xs text-slate-500 mt-2" id="stepLabel">Mobile verification</div>
+  </div>
+
+  <div id="errorBox" class="ns-error"></div>
+
+  <form id="signupForm">
+    <section class="step active" data-step="1">
+      <h3 class="font-headline text-xl font-bold mb-1">Verify your mobile</h3>
+      <p class="text-sm text-slate-500 mb-6">We'll use your phone number for account verification and emergency communication.</p>
+      <label class="block font-bold text-xs tracking-widest text-on-surface-variant mb-2">MOBILE NUMBER</label>
+      <input id="phone" type="tel" inputmode="numeric" maxlength="10" required placeholder="10-digit mobile number" class="input-field block w-full px-4 py-3 rounded-lg bg-white text-base">
+      <button type="button" id="sendOtpBtn" class="primary-btn w-full py-3 rounded-lg text-white font-bold text-xs tracking-widest mt-5">Send OTP</button>
+    </section>
+
+    <section class="step" data-step="2">
+      <h3 class="font-headline text-xl font-bold mb-1">Verify OTP</h3>
+      <p class="text-sm text-slate-500 mb-6">Enter the 6-digit OTP sent to your mobile number.</p>
+      <label class="block font-bold text-xs tracking-widest text-on-surface-variant mb-2">OTP</label>
+      <input id="otp" type="text" inputmode="numeric" maxlength="6" required placeholder="••••••" class="input-field block w-full px-4 py-3 rounded-lg text-center tracking-[.5em] text-xl">
+      <div class="grid grid-cols-2 gap-3 mt-5">
+        <button type="button" id="resendOtpBtn" class="py-3 rounded-lg border font-bold text-xs tracking-widest">Resend OTP</button>
+        <button type="button" id="verifyOtpBtn" class="primary-btn py-3 rounded-lg text-white font-bold text-xs tracking-widest">Verify & Continue</button>
+      </div>
+    </section>
+
+    <section class="step" data-step="3">
+      <h3 class="font-headline text-xl font-bold mb-1">Personal details</h3>
+      <p class="text-sm text-slate-500 mb-6">These details help NovaShields provide the right safety and emergency support.</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="sm:col-span-2"><label class="block font-bold text-xs tracking-widest text-on-surface-variant mb-2">FULL NAME</label><input id="fullName" required class="input-field w-full px-4 py-3 rounded-lg"></div>
+        <div><label class="block font-bold text-xs tracking-widest text-on-surface-variant mb-2">DATE OF BIRTH</label><input id="dob" type="date" required class="input-field w-full px-4 py-3 rounded-lg"></div>
+        <div><label class="block font-bold text-xs tracking-widest text-on-surface-variant mb-2">BLOOD GROUP</label><select id="bloodGroup" required class="input-field w-full px-4 py-3 rounded-lg"><option value="">Select</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option><option>Unknown</option></select></div>
+        <div class="sm:col-span-2"><label class="block font-bold text-xs tracking-widest text-on-surface-variant mb-2">EMAIL</label><input id="email" type="email" required class="input-field w-full px-4 py-3 rounded-lg"></div>
+        <div class="sm:col-span-2"><label class="block font-bold text-xs tracking-widest text-on-surface-variant mb-2">ADDRESS</label><textarea id="address" rows="3" required class="input-field w-full px-4 py-3 rounded-lg"></textarea></div>
+      </div>
+      <button type="button" id="detailsNextBtn" class="primary-btn w-full py-3 rounded-lg text-white font-bold text-xs tracking-widest mt-5">Continue</button>
+    </section>
+
+    <section class="step" data-step="4">
+      <h3 class="font-headline text-xl font-bold mb-1">Emergency contacts</h3>
+      <p class="text-sm text-slate-500 mb-5">Add up to 5 people. The first contact is required and treated as primary.</p>
+      <div id="contactsContainer" class="space-y-3"></div>
+      <button type="button" id="addContactBtn" class="w-full py-3 rounded-lg border font-bold text-xs tracking-widest mt-4">+ Add Emergency Contact</button>
+      <button type="button" id="contactsNextBtn" class="primary-btn w-full py-3 rounded-lg text-white font-bold text-xs tracking-widest mt-3">Continue</button>
+    </section>
+
+    <section class="step" data-step="5">
+      <h3 class="font-headline text-xl font-bold mb-1">Activate Black Box</h3>
+      <p class="text-sm text-slate-500 mb-6">Enter the device ID printed on your NovaShields Black Box or supplied with the device.</p>
+      <label class="block font-bold text-xs tracking-widest text-on-surface-variant mb-2">DEVICE ID</label>
+      <input id="deviceId" required placeholder="e.g. NS001" class="input-field w-full px-4 py-3 rounded-lg uppercase">
+      <div class="mt-4 p-4 rounded-xl bg-surface-container-low border border-slate-100 text-sm text-slate-600">
+        <div class="flex gap-2 items-start"><span class="material-symbols-outlined text-primary">info</span><span>For a production deployment, bind the device using a QR/activation code rather than allowing arbitrary device IDs.</span></div>
+      </div>
+      <button id="registerBtn" type="submit" class="primary-btn w-full py-3 rounded-lg text-white font-bold text-xs tracking-widest mt-5">Complete Registration</button>
+    </section>
+  </form>
+
+  <section id="successBox" class="hidden">
+    <div class="text-center">
+      <div class="mx-auto w-16 h-16 rounded-full bg-cyan-50 flex items-center justify-center"><span class="material-symbols-outlined text-primary text-4xl">check_circle</span></div>
+      <h3 class="font-headline text-2xl font-bold mt-4">Registration Complete</h3>
+      <p class="text-sm text-slate-500 mt-2">Your NovaShields accounts have been created.</p>
+    </div>
+    <div id="credentialsBox" class="space-y-3 mt-6"></div>
+    <a href="../login/index.html" class="primary-btn block text-center w-full py-3 rounded-lg text-white font-bold text-xs tracking-widest mt-5">Continue to Login</a>
+  </section>
+</div>
+</div>
+
+<script src="../shared-config.js"></script>
+<script src="../shared-api.js"></script>
+<script src="signup.js"></script>
+</body>
+</html>

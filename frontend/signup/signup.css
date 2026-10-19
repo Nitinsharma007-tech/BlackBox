@@ -1,0 +1,2 @@
+/* NovaShields signup-specific overrides. Main visual language is shared with login. */
+.signup-hidden { display: none !important; }
